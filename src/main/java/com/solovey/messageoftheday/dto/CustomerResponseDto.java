@@ -14,7 +14,5 @@ import java.util.List;
 public class CustomerResponseDto {
     private String username;
 
-    private String password;
-
     List<Role> roles;
 }
