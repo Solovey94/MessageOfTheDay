@@ -11,14 +11,10 @@ import java.util.List;
 @Setter
 @ToString
 @EqualsAndHashCode
-public class CustomerDto {
-
-    private Long id;
-
+public class CustomerResponseDto {
     private String username;
 
     private String password;
 
-    private List<Role> roles;
-
+    List<Role> roles;
 }

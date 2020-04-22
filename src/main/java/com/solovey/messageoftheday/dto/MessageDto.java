@@ -16,6 +16,8 @@ public class MessageDto {
 
     private String text;
 
+    private Long customer_id;
+
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy")
     private LocalDate creationDate;
 }
