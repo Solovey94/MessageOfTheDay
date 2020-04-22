@@ -14,5 +14,5 @@ import java.util.List;
 public class CustomerResponseDto {
     private String username;
 
-    List<Role> roles;
+    private List<Role> roles;
 }
