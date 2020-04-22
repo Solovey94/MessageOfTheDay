@@ -25,11 +25,11 @@ public class Message {
     private LocalDate creationDate;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id")
-    private Customer author;
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
     public boolean like(Message message) {
-        if (!author.equals(message.author)) return false;
+        if (!customer.equals(message.customer)) return false;
         if (!text.equals(message.text)) return false;
         return Objects.equals(creationDate, message.creationDate);
     }
@@ -49,7 +49,7 @@ public class Message {
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + text.hashCode();
-        result = 31 * result + author.hashCode();
+        result = 31 * result + customer.hashCode();
         result = 31 * result + creationDate.hashCode();
         return result;
     }
