@@ -1,17 +1,21 @@
 package com.solovey.messageoftheday.repository;
 
-import com.solovey.messageoftheday.model.Customer;
 import com.solovey.messageoftheday.model.Message;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface MessageRepository extends JpaRepository<Message, Long> {
 
-    List<Message> findByText(String text);
+    Optional<Message> findById(Long id);
 
-    List<Customer> findByCustomerId(Long customerId);
+    List<Message> findByCustomerId(Long customerId);
+
+    List<Message> findByCreationDate(LocalDate date);
 
 }
