@@ -6,7 +6,6 @@ import com.solovey.messageoftheday.dto.CustomerResponseDto;
 import com.solovey.messageoftheday.model.Customer;
 
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 
@@ -16,11 +15,7 @@ public interface CustomerService{
 
     String signUp(Customer customer);
 
-    Customer whoAmI(HttpServletRequest req) ;
-
     Customer addCustomer(CustomerRequestDto customerRequestDto);
-
-    //CustomerRequestDto add(CustomerDto customerDto);
 
     Customer updateCustomer(CustomerDto customerDto);
 
@@ -33,8 +28,6 @@ public interface CustomerService{
     List<CustomerDto> findAllCustomers();
 
     CustomerResponseDto findCustomerByUsername(String username);
-
-    Customer findByUsername(String username);
 
     void deleteCustomerById(Long id);
 

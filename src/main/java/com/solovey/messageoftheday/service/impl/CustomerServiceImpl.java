@@ -87,17 +87,12 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
 
-    @Override
-    public Customer whoAmI(HttpServletRequest req) {
-        return customerRepository.findByUsername(jwtTokenProvider.getUsername(jwtTokenProvider.resolveToken(req))).get();
-    }
-
-
     @Transactional
     @Override
     public Customer updateCustomer(CustomerDto customerDto) {
         Customer customer = getCustomerById(customerDto.getId());
         BeanUtils.copyProperties(customerDto, customer, "id");
+        customer.setPassword(passwordEncoder.encode(customer.getPassword()));
         return customer;
     }
 
@@ -150,19 +145,6 @@ public class CustomerServiceImpl implements CustomerService {
         }
     }
 
-    @Transactional
-    @Override
-    public Customer findByUsername(String username) {
-        if (username == null) {
-            throw new NotFoundException("Not found by username " + username.toString());
-        }
-        Optional<Customer> customer = customerRepository.findByUsername(username);
-        if (customer.isPresent()) {
-            return customer.get();
-        } else {
-            throw new NotFoundException("Not found by username " + username.toString());
-        }
-    }
 
     @Transactional
     @Override
