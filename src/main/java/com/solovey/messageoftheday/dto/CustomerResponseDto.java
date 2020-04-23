@@ -12,7 +12,11 @@ import java.util.List;
 @ToString
 @EqualsAndHashCode
 public class CustomerResponseDto {
+
+    private Long id;
+
     private String username;
 
     private List<Role> roles;
+
 }
